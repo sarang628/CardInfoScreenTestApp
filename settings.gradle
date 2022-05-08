@@ -4,3 +4,15 @@ include ':app'
 
 include ':screen_cardinfo'
 project(':screen_cardinfo').projectDir = new File('./cardinfo')
+
+include ':torang_core'
+project(':torang_core').projectDir = new File('./TorangCore/torang_core')
+
+include ':torangimageloader'
+project(':torangimageloader').projectDir = new File('./TorangImageLoader/torangimageloader')
+
+include ':TorangRepository'
+project(':TorangRepository').projectDir = new File('./Repository/TorangRepository')
+
+include ':TorangTestRepository'
+project(':TorangTestRepository').projectDir = new File('./Repository/TorangTestRepository/testrepository')

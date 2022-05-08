@@ -5,6 +5,8 @@
       <map>
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="cardinfo/src/main/res/layout/fragment_torang_card_vp_item.xml" value="0.1" />
+        <entry key="cardinfo/src/main/res/layout/fragment_view_pager.xml" value="0.20833333333333334" />
+        <entry key="cardinfo/src/main/res/layout/item_image.xml" value="0.20833333333333334" />
       </map>
     </option>
   </component>

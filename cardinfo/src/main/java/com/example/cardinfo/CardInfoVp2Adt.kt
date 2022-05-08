@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
-import com.example.screen_finding.databinding.FragmentTorangCardVpItemBinding
+import com.example.cardinfo.databinding.FragmentTorangCardVpItemBinding
 import com.example.torang_core.data.model.Restaurant
 import com.example.torang_core.util.Logger
 

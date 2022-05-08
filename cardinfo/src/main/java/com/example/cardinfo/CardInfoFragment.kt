@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.example.screen_finding.databinding.FragmentViewPagerBinding
+import com.example.cardinfo.databinding.FragmentViewPagerBinding
 import com.example.torang_core.navigation.RestaurantDetailNavigation
 import com.example.torang_core.util.EventObserver
 import com.example.torang_core.util.Logger

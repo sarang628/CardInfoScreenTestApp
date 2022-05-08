@@ -1,0 +1,9 @@
+[submodule "TorangCore"]
+	path = TorangCore
+	url = https://github.com/sarang628/TorangCore.git
+[submodule "TorangImageLoader"]
+	path = TorangImageLoader
+	url = https://github.com/sarang628/TorangImageLoader.git
+[submodule "Repository"]
+	path = Repository
+	url = https://github.com/sarang628/Repository.git
