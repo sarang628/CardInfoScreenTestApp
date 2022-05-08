@@ -1,0 +1,6 @@
+rootProject.name = "CardInfoScreenTestApp"
+include ':app'
+
+
+include ':screen_cardinfo'
+project(':screen_cardinfo').projectDir = new File('./cardinfo')
