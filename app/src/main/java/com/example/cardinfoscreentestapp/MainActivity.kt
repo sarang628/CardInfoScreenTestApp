@@ -2,18 +2,29 @@ package com.example.cardinfoscreentestapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
 import com.example.torang_core.data.model.SearchType
 import com.example.torang_core.repository.FilterRepository
 import com.example.torang_core.repository.FindRepository
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
+import kotlin.random.Random
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var findRepository: FindRepository
+
+    val isMoving = false
+
+    var job: Job? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +34,44 @@ class MainActivity : AppCompatActivity() {
             findRepository.searchRestaurant(searchType = SearchType.BOUND)
         }
 
-
+        findViewById<Button>(R.id.btn).setOnClickListener {
+            cardMoveTest()
+        }
     }
+
+    private fun cardMoveTest() {
+        lifecycleScope.launch {
+            if (job == null) {
+                job = lifecycleScope.launch {
+                    while (true) {
+                        delay(1000)
+                        val position = java.util.Random().nextInt(20)
+                        findViewById<TextView>(R.id.tv).text = "카드이동:$position"
+                        findRepository.setCurrentPosition(position)
+                    }
+                }
+                findViewById<TextView>(R.id.tv).text = "카드이동"
+                job!!.start()
+            } else {
+                if (job!!.isActive) {
+                    findViewById<TextView>(R.id.tv).text = "카드멈춤"
+                    job!!.cancel()
+                } else {
+                    job = lifecycleScope.launch {
+                        while (true) {
+                            delay(1000)
+                            val position = java.util.Random().nextInt(20)
+                            findViewById<TextView>(R.id.tv).text = "카드이동:$position"
+                            findRepository.setCurrentPosition(position)
+                        }
+                    }
+                    findViewById<TextView>(R.id.tv).text = "카드이동"
+                    job!!.start()
+                }
+            }
+
+        }
+    }
+
+
 }

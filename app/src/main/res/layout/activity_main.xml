@@ -7,9 +7,25 @@
     android:background="@color/colorSecondaryLight"
     tools:context=".MainActivity">
 
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카드 이동 테스트" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="카드 멈춤"
+        app:layout_constraintBottom_toBottomOf="@+id/btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <fragment
         android:id="@+id/fragment"
-        class="com.example.cardinfo.CardInfoFragment"
+        class="com.example.cardinfo.RestaurantInfoCardFragment"
         android:layout_width="0dp"
         android:layout_height="160dp"
         app:layout_constraintBottom_toBottomOf="parent"

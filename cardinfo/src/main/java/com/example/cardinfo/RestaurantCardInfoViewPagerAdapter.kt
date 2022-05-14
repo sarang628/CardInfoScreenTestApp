@@ -11,7 +11,7 @@ import com.example.torang_core.util.Logger
 /**
  * [CardInfoViewHolder]
  */
-class CardInfoVp2Adt(val cardInfoViewModel: CardInfoViewModel, val lifecycleOwner: LifecycleOwner) :
+class CardInfoVp2Adt(val cardInfoViewModel: RestaurantInfoCardViewModel, val lifecycleOwner: LifecycleOwner) :
     RecyclerView.Adapter<CardInfoViewHolder>() {
 
     private var restaurants: List<Restaurant> = ArrayList()

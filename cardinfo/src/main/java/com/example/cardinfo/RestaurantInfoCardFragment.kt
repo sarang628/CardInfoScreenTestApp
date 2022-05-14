@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
-import com.example.cardinfo.databinding.FragmentViewPagerBinding
+import com.example.cardinfo.databinding.FragmentRestaurantInfoCardBinding
 import com.example.torang_core.navigation.RestaurantDetailNavigation
 import com.example.torang_core.util.EventObserver
 import com.example.torang_core.util.Logger
@@ -22,13 +22,14 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 /**
+ * 맛집정보카드 화면입니다.
  * [FragmentViewPagerBinding]
  * [CardInfoVp2Adt]
  */
 @AndroidEntryPoint
-class CardInfoFragment : Fragment() {
-    /** 카드 정보 뷰모델 */
-    private val viewModel: CardInfoViewModel by viewModels()
+class RestaurantInfoCardFragment : Fragment() {
+    /** 맛집정보카드 뷰모델 */
+    private val viewModel: RestaurantInfoCardViewModel by viewModels()
 
     /** 카드정보 뷰페이저 아답터 */
     private lateinit var adapter: CardInfoVp2Adt
@@ -45,14 +46,14 @@ class CardInfoFragment : Fragment() {
         adapter = CardInfoVp2Adt(viewModel, viewLifecycleOwner)
 
         // 바인딩 초기화
-        val binding = FragmentViewPagerBinding.inflate(layoutInflater, container, false)
+        val binding = FragmentRestaurantInfoCardBinding.inflate(layoutInflater, container, false)
             .apply {
                 lifecycleOwner = viewLifecycleOwner
                 // 뷰페이저 설정
                 vp.apply {
                     clipToPadding = false
                     setPageTransformer(MarginPageTransformer(50))
-                    adapter = this@CardInfoFragment.adapter
+                    adapter = this@RestaurantInfoCardFragment.adapter
                 }
                 // 뷰페이저 페이지 리스너 설정
                 setPagerScrollListener(vp)
@@ -67,7 +68,7 @@ class CardInfoFragment : Fragment() {
     /**
      * UI 구독
      */
-    private fun subScribeUi(binding: FragmentViewPagerBinding) {
+    private fun subScribeUi(binding: FragmentRestaurantInfoCardBinding) {
         lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.RESUMED) {
                 //UI 상태 정보

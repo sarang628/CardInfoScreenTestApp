@@ -11,22 +11,26 @@ import com.example.torang_core.util.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * 맛집정보카드 뷰모델 입니다.
+ */
 @HiltViewModel
-class CardInfoViewModel @Inject constructor(
+class RestaurantInfoCardViewModel @Inject constructor(
     private val mapRepository: MapRepository,
     private val findRepository: FindRepository
 ) : ViewModel() {
-    private val _uiState = MutableStateFlow(CardInfoUiState())
-    val uiState: StateFlow<CardInfoUiState> = _uiState
+    private val _uiState = MutableStateFlow(RestaurantInfoCardUiState())
+    val uiState: StateFlow<RestaurantInfoCardUiState> = _uiState
 
     init {
         viewModelScope.launch {
             // 현재 포커스된 맛집 위치
-            findRepository.getCurrentPosition().collect { position ->
+            findRepository.getCurrentPosition().collectLatest { position ->
                 _uiState.update {
                     it.copy(currentPosition = position)
                 }
@@ -35,7 +39,7 @@ class CardInfoViewModel @Inject constructor(
 
         viewModelScope.launch {
             // 맵 클릭 감지
-            mapRepository.getClickMap().collect { showCard ->
+            mapRepository.getClickMap().collectLatest { showCard ->
                 _uiState.update {
                     it.copy(showCard = showCard)
                 }
@@ -44,7 +48,7 @@ class CardInfoViewModel @Inject constructor(
 
         viewModelScope.launch {
             // 검색된 맛집 리스트
-            findRepository.getSearchedRestaurant().collect { restaurants ->
+            findRepository.getSearchedRestaurant().collectLatest { restaurants ->
                 _uiState.update {
                     it.copy(restaurants = restaurants)
                 }

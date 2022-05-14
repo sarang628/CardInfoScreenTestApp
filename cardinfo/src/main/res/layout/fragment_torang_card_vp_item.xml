@@ -11,7 +11,7 @@
 
         <variable
             name="cardInfoViewModel"
-            type="com.example.cardinfo.CardInfoViewModel" />
+            type="com.example.cardinfo.RestaurantInfoCardViewModel" />
 
     </data>
 
