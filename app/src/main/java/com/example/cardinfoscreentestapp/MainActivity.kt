@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.example.torang_core.data.model.SearchType
 import com.example.torang_core.repository.FilterRepository
 import com.example.torang_core.repository.FindRepository
+import com.example.torang_core.repository.MapRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -21,6 +22,9 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var findRepository: FindRepository
+
+    @Inject
+    lateinit var mapRepository: MapRepository
 
     val isMoving = false
 
@@ -36,6 +40,12 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btn).setOnClickListener {
             cardMoveTest()
+        }
+
+        findViewById<Button>(R.id.btn_show).setOnClickListener {
+            lifecycleScope.launch {
+                mapRepository.clickMap()
+            }
         }
     }
 
