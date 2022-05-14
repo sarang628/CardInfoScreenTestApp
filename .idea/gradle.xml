@@ -10,12 +10,12 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/CardInfo" />
             <option value="$PROJECT_DIR$/Repository/TorangRepository" />
             <option value="$PROJECT_DIR$/Repository/TorangTestRepository/testrepository" />
             <option value="$PROJECT_DIR$/TorangCore/torang_core" />
             <option value="$PROJECT_DIR$/TorangImageLoader/torangimageloader" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/cardinfo" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

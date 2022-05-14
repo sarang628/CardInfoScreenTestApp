@@ -7,3 +7,6 @@
 [submodule "Repository"]
 	path = Repository
 	url = https://github.com/sarang628/Repository.git
+[submodule "CardInfo"]
+	path = CardInfo
+	url = https://github.com/sarang628/CardInfo.git

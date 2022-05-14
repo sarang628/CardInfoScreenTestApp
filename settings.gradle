@@ -3,7 +3,7 @@ include ':app'
 
 
 include ':screen_cardinfo'
-project(':screen_cardinfo').projectDir = new File('./cardinfo')
+project(':screen_cardinfo').projectDir = new File('./CardInfo')
 
 include ':torang_core'
 project(':torang_core').projectDir = new File('./TorangCore/torang_core')
