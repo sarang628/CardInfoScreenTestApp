@@ -26,6 +26,7 @@ class TestFindRepositoryImpl @Inject constructor(@ApplicationContext val context
     private val isRequestingLocation = MutableStateFlow(false)
     private val searchBoundRestaurantTrigger = MutableStateFlow(false)
     private val currentPosition = MutableStateFlow(0)
+    private val showRestaurantCardAndFilter = MutableStateFlow(false)
 
     // 위치요청을 처음 했는지 여부
     private val isFirstRequestLocationPermission = MutableStateFlow(false)
@@ -79,7 +80,7 @@ class TestFindRepositoryImpl @Inject constructor(@ApplicationContext val context
     /**
      * 위치를 요청했다고 알려줌
      */
-    override suspend fun notifyRequestLocation() : RequestLocationResult {
+    override suspend fun notifyRequestLocation(): RequestLocationResult {
         //성공
         //return RequestLocationResult.SUCCESS
         //설정 화면 이동 팝업
@@ -117,6 +118,9 @@ class TestFindRepositoryImpl @Inject constructor(@ApplicationContext val context
 
     override suspend fun setCurrentPosition(position: Int) {
         currentPosition.emit(position)
+        //추가 카드 보여지게 변경
+        if (!showRestaurantCardAndFilter.value)
+            showRestaurantCardAndFilter.emit(true)
     }
 
     override fun getCurrentPosition(): StateFlow<Int> {
@@ -140,5 +144,14 @@ class TestFindRepositoryImpl @Inject constructor(@ApplicationContext val context
 
     override suspend fun permissionGranated() {
         hasGrantPermission.emit(PackageManager.PERMISSION_GRANTED)
+    }
+
+    override fun showRestaurantCardAndFilter(): Flow<Boolean> {
+        return showRestaurantCardAndFilter
+    }
+
+    // 지도 클릭 시 이벤트를 받아 카드 보여지는 여부 변경
+    override suspend fun clickMap() {
+        showRestaurantCardAndFilter.emit(!showRestaurantCardAndFilter.value)
     }
 }

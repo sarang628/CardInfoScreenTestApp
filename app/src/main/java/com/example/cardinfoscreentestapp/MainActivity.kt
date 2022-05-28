@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<Button>(R.id.btn_show).setOnClickListener {
             lifecycleScope.launch {
-                mapRepository.clickMap()
+                findRepository.clickMap()
             }
         }
     }
