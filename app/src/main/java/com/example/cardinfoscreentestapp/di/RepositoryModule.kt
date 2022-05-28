@@ -1,6 +1,5 @@
-package com.sarang.torang.di
+package com.example.cardinfoscreentestapp.di
 
-import com.example.testrepository.TestFindRepositoryImpl
 import com.example.torang_core.repository.*
 import com.example.torangrepository.*
 import dagger.Binds
