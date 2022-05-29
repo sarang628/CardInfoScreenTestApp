@@ -12,6 +12,7 @@ import com.example.torang_core.repository.MapRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.FlowCollector
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
@@ -47,6 +48,14 @@ class MainActivity : AppCompatActivity() {
                 findRepository.clickMap()
             }
         }
+
+        var tvShow = findViewById<TextView>(R.id.tv_show)
+        lifecycleScope.launch {
+            findRepository.showRestaurantCardAndFilter().collect(FlowCollector{
+                tvShow.text = it.toString()
+            })
+        }
+
     }
 
     private fun cardMoveTest() {
